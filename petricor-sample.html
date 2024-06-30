@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web App Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .active {
+            background-color: #3b82f6; /* Tailwind's blue-600 color */
+        }
+        .image-max-size {
+            max-width: 290px;
+            max-height: 290px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Sidebar -->
+    <div class="flex">
+        <nav class="bg-blue-500 w-64 min-h-screen p-4">
+            <div class="text-white text-lg font-bold mb-4">
+                Web App Menu
+            </div>
+            <ul class="space-y-2">
+                <li><a href="#" class="block text-white hover:bg-blue-700 px-3 py-2 rounded" data-page="dashboard">Dashboard</a></li>
+                <li><a href="#" class="block text-white hover:bg-blue-700 px-3 py-2 rounded" data-page="sample-input">Sample Input</a></li>
+                <li><a href="#" class="block text-white hover:bg-blue-700 px-3 py-2 rounded" data-page="sample-analysis">Sample Analysis</a></li>
+                <li><a href="#" class="block text-white hover:bg-blue-700 px-3 py-2 rounded" data-page="sample-output">Sample Output</a></li>
+                <li><a href="#" class="block text-white hover:bg-blue-700 px-3 py-2 rounded" data-page="data-management">Data Management</a></li>
+                <li><a href="#" class="block text-white hover:bg-blue-700 px-3 py-2 rounded" data-page="quality-control">Quality Control</a></li>
+                <li><a href="#" class="block text-white hover:bg-blue-700 px-3 py-2 rounded" data-page="reporting">Reporting</a></li>
+                <li><a href="#" class="block text-white hover:bg-blue-700 px-3 py-2 rounded" data-page="maintenance-control">Maintenance and Control</a></li>
+                <li><a href="#" class="block text-white hover:bg-blue-700 px-3 py-2 rounded" data-page="settings">Settings</a></li>
+            </ul>
+        </nav>
+        <main class="flex-1 p-8">
+            <!-- Main content goes here -->
+            <div id="dashboard" class="page hidden">
+                <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+                <div id="dashboard-content" class="flex flex-wrap gap-4"></div>
+            </div>
+
+            <div id="sample-input" class="page hidden">
+                <h1 class="text-2xl font-bold mb-4">Sample Input</h1>
+                <form id="sample-input-form">
+                    <label class="block mb-2">Sample Name</label>
+                    <input type="text" name="sampleName" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Sample ID</label>
+                    <input type="text" name="sampleID" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Collection Date</label>
+                    <input type="date" name="collectionDate" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Collector Name</label>
+                    <input type="text" name="collectorName" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Sample Type</label>
+                    <input type="text" name="sampleType" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Upload Image</label>
+                    <input type="file" name="sampleImage" accept="image/*" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+                </form>
+            </div>
+
+            <div id="sample-analysis" class="page hidden">
+                <h1 class="text-2xl font-bold mb-4">Sample Analysis</h1>
+                <form id="sample-analysis-form">
+                    <label class="block mb-2">Sample ID</label>
+                    <input type="text" name="sampleID" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Analysis Type</label>
+                    <input type="text" name="analysisType" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Analysis Date</label>
+                    <input type="date" name="analysisDate" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Analyst Name</label>
+                    <input type="text" name="analystName" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Results</label>
+                    <textarea name="results" class="block w-full mb-4 p-2 border rounded" required></textarea>
+                    
+                    <label class="block mb-2">Upload Image</label>
+                    <input type="file" name="analysisImage" accept="image/*" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+                </form>
+            </div>
+
+            <div id="sample-output" class="page hidden">
+                <h1 class="text-2xl font-bold mb-4">Sample Output</h1>
+                <form id="sample-output-form">
+                    <label class="block mb-2">Sample ID</label>
+                    <input type="text" name="sampleID" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Output Type</label>
+                    <input type="text" name="outputType" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Output Date</label>
+                    <input type="date" name="outputDate" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Output Description</label>
+                    <textarea name="outputDescription" class="block w-full mb-4 p-2 border rounded" required></textarea>
+                    
+                    <label class="block mb-2">Handled By</label>
+                    <input type="text" name="handledBy" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Upload Image</label>
+                    <input type="file" name="outputImage" accept="image/*" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+                </form>
+            </div>
+
+            <div id="data-management" class="page hidden">
+                <h1 class="text-2xl font-bold mb-4">Data Management</h1>
+                <form id="data-management-form">
+                    <label class="block mb-2">Data ID</label>
+                    <input type="text" name="dataID" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Data Description</label>
+                    <textarea name="dataDescription" class="block w-full mb-4 p-2 border rounded" required></textarea>
+                    
+                    <label class="block mb-2">Entry Date</label>
+                    <input type="date" name="entryDate" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Entered By</label>
+                    <input type="text" name="enteredBy" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Data Status</label>
+                    <input type="text" name="dataStatus" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Upload Image</label>
+                    <input type="file" name="dataImage" accept="image/*" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+                </form>
+            </div>
+
+            <div id="quality-control" class="page hidden">
+                <h1 class="text-2xl font-bold mb-4">Quality Control</h1>
+                <form id="quality-control-form">
+                    <label class="block mb-2">Control ID</label>
+                    <input type="text" name="controlID" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Control Measure</label>
+                    <textarea name="controlMeasure" class="block w-full mb-4 p-2 border rounded" required></textarea>
+                    
+                    <label class="block mb-2">Inspection Date</label>
+                    <input type="date" name="inspectionDate" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Inspector Name</label>
+                    <input type="text" name="inspectorName" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Results</label>
+                    <textarea name="results" class="block w-full mb-4 p-2 border rounded" required></textarea>
+                    
+                    <label class="block mb-2">Upload Image</label>
+                    <input type="file" name="controlImage" accept="image/*" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+                </form>
+            </div>
+
+            <div id="reporting" class="page hidden">
+                <h1 class="text-2xl font-bold mb-4">Reporting</h1>
+                <form id="reporting-form">
+                    <label class="block mb-2">Report Name</label>
+                    <input type="text" name="reportName" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Report ID</label>
+                    <input type="text" name="reportID" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Report Date</label>
+                    <input type="date" name="reportDate" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Prepared By</label>
+                    <input type="text" name="preparedBy" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Report Summary</label>
+                    <textarea name="reportSummary" class="block w-full mb-4 p-2 border rounded" required></textarea>
+                    
+                    <label class="block mb-2">Upload Image</label>
+                    <input type="file" name="reportImage" accept="image/*" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+                </form>
+            </div>
+
+            <div id="maintenance-control" class="page hidden">
+                <h1 class="text-2xl font-bold mb-4">Maintenance and Control</h1>
+                <form id="maintenance-control-form">
+                    <label class="block mb-2">Task ID</label>
+                    <input type="text" name="taskID" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Task Description</label>
+                    <textarea name="taskDescription" class="block w-full mb-4 p-2 border rounded" required></textarea>
+                    
+                    <label class="block mb-2">Assigned To</label>
+                    <input type="text" name="assignedTo" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Due Date</label>
+                    <input type="date" name="dueDate" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Status</label>
+                    <input type="text" name="status" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Upload Image</label>
+                    <input type="file" name="taskImage" accept="image/*" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+                </form>
+            </div>
+
+            <div id="settings" class="page hidden">
+                <h1 class="text-2xl font-bold mb-4">Settings</h1>
+                <form id="settings-form">
+                    <label class="block mb-2">Setting Name</label>
+                    <input type="text" name="settingName" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Setting Value</label>
+                    <input type="text" name="settingValue" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Setting Description</label>
+                    <textarea name="settingDescription" class="block w-full mb-4 p-2 border rounded" required></textarea>
+                    
+                    <label class="block mb-2">Created By</label>
+                    <input type="text" name="createdBy" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Creation Date</label>
+                    <input type="date" name="creationDate" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <label class="block mb-2">Upload Image</label>
+                    <input type="file" name="settingImage" accept="image/*" class="block w-full mb-4 p-2 border rounded" required>
+                    
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+                </form>
+            </div>
+
+            <!-- Success Toast -->
+            <div id="success-toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg hidden">
+                Form submitted successfully!
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simulate the current page. This would come from your routing logic.
+        let currentPage = 'dashboard';
+
+        // Function to show the active page and set the active class on the menu
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+            document.querySelector(`#${page}`).classList.remove('hidden');
+
+            document.querySelectorAll('nav a').forEach(link => {
+                if (link.getAttribute('data-page') === page) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Initial page load
+        showPage(currentPage);
+
+        // Event listeners for menu items
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                currentPage = link.getAttribute('data-page');
+                showPage(currentPage);
+            });
+        });
+
+        // Function to show success toast
+        function showToast() {
+            const toast = document.getElementById('success-toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Function to add data to the dashboard
+        function addToDashboard(data, source, image) {
+            const dashboardContent = document.getElementById('dashboard-content');
+            const card = document.createElement('div');
+            card.className = 'bg-white p-4 rounded shadow space-y-2 w-auto';
+            
+            const sourceTag = document.createElement('div');
+            sourceTag.className = 'text-sm font-semibold text-white bg-blue-500 rounded-full px-2 py-1 inline-block';
+            sourceTag.textContent = source;
+            card.appendChild(sourceTag);
+
+            const imageElement = document.createElement('img');
+            imageElement.src = URL.createObjectURL(image);
+            imageElement.className = 'w-full h-auto rounded image-max-size';
+            card.appendChild(imageElement);
+
+            const dataEntries = Object.entries(data);
+            dataEntries.forEach(([key, value], index) => {
+                const dataItem = document.createElement('div');
+                dataItem.className = index === 0 ? 'text-xl font-bold' : 'text-sm';
+                dataItem.textContent = `${key}: ${value}`;
+                card.appendChild(dataItem);
+            });
+
+            dashboardContent.appendChild(card);
+        }
+
+        // Handle form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                const data = new FormData(form);
+                const entries = Object.fromEntries(data.entries());
+                const dataSource = form.parentElement.querySelector('h1').textContent;
+                const image = form.querySelector('input[type="file"]').files[0];
+
+                showToast();
+                addToDashboard(entries, dataSource, image);
+
+                form.reset();
+            });
+        });
+    </script>
+
+</body>
+</html>
+
